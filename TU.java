@@ -1040,3 +1040,63 @@ public static String getmaillink() throws MessagingException, IOException {
 		return urlLink;
         }         
 }
+
+-------------handle windows authentication-----------------------------------
+	package com.advisorgroup.WEBFEI.aut.utils;
+
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
+public class HandleAuthWindow implements Runnable {
+
+	@Override
+	 public void run() {
+        try {
+            AuthWindow();
+        } catch (Exception ex) {
+            System.out.println("Error in Login Thread: " + ex.getMessage());
+        }
+    }
+	 public void AuthWindow() throws Exception {
+
+         //wait - increase this wait period if required
+         Thread.sleep(2000);
+
+         //create robot for keyboard operations
+         Robot rb = new Robot();
+
+         //Enter user name by ctrl-v
+         StringSelection username = new StringSelection("Vnadarajan");
+         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(username, null);            
+         rb.keyPress(KeyEvent.VK_CONTROL);
+         rb.keyPress(KeyEvent.VK_V);
+         rb.keyRelease(KeyEvent.VK_V);
+         rb.keyRelease(KeyEvent.VK_CONTROL);
+
+         //tab to password entry field
+         rb.keyPress(KeyEvent.VK_TAB);
+         rb.keyRelease(KeyEvent.VK_TAB);
+         Thread.sleep(2000);
+
+         //Enter password by ctrl-v
+         StringSelection pwd = new StringSelection("Ironman@06");
+         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(pwd, null);
+         rb.keyPress(KeyEvent.VK_CONTROL);
+         rb.keyPress(KeyEvent.VK_V);
+         rb.keyRelease(KeyEvent.VK_V);
+         rb.keyRelease(KeyEvent.VK_CONTROL);
+
+         //press enter
+         rb.keyPress(KeyEvent.VK_ENTER);
+         rb.keyRelease(KeyEvent.VK_ENTER);
+
+         //wait
+         Thread.sleep(3000);
+     }
+ }
+	
+	
+
+
