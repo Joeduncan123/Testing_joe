@@ -988,8 +988,8 @@ public static String getmaillink() throws MessagingException, IOException {
           String passcodex = null;
           String host = "imap-mail.outlook.com";
           String mailStoreType = "imap";
-          String username = "siva.sankar@advisorgroup.com";
-          String password = "OnOa14546";
+          String username = "null";
+          String password = "null";
 //          Srisai123$
           String urlLink="";
           Properties properties = new Properties();
@@ -1009,7 +1009,7 @@ public static String getmaillink() throws MessagingException, IOException {
               System.exit(0);
               }
               folder.open(Folder.READ_WRITE);
-              SearchTerm sender = new FromTerm(new InternetAddress("noreply@signixmail.com"));
+              SearchTerm sender = new FromTerm(new InternetAddress("noreply@test.com"));
               Message[] msg = folder.search(sender);
               int n=msg.length;
               System.out.println("SAI &&&&&&&&&&&&&&: "+ n);
@@ -1068,7 +1068,7 @@ public class HandleAuthWindow implements Runnable {
          Robot rb = new Robot();
 
          //Enter user name by ctrl-v
-         StringSelection username = new StringSelection("Vnadarajan");
+         StringSelection username = new StringSelection("test");
          Toolkit.getDefaultToolkit().getSystemClipboard().setContents(username, null);            
          rb.keyPress(KeyEvent.VK_CONTROL);
          rb.keyPress(KeyEvent.VK_V);
@@ -1081,7 +1081,7 @@ public class HandleAuthWindow implements Runnable {
          Thread.sleep(2000);
 
          //Enter password by ctrl-v
-         StringSelection pwd = new StringSelection("Ironman@06");
+         StringSelection pwd = new StringSelection("test@06");
          Toolkit.getDefaultToolkit().getSystemClipboard().setContents(pwd, null);
          rb.keyPress(KeyEvent.VK_CONTROL);
          rb.keyPress(KeyEvent.VK_V);
